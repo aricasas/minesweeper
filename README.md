@@ -27,8 +27,7 @@ Symbols should be the following:
 6 mines          - 6
 7 mines          - 7
 8 mines          - 8
-Uncovered spot   - ▒
-Flagged mine     - ■
+Covered spot     - ▒
 Mines you missed - X
 Erroneous flags  - @
 ```
