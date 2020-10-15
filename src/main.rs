@@ -4,7 +4,8 @@
     clippy::nursery,
     clippy::correctness,
     clippy::complexity,
-    clippy::perf
+    clippy::perf,
+    clippy::style
 )]
 
 mod cells;
