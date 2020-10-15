@@ -46,7 +46,6 @@ fn main() {
     stdout.flush().unwrap();
 
     for input in stdin.keys() {
-        // Print the key we type...
         match input.unwrap() {
             // Break if user pressed q or Ctrl+C
             Key::Char('q') | Key::Ctrl('c') => break,
