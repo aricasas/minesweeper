@@ -50,6 +50,7 @@ fn main() {
             // Break if user pressed q or Ctrl+C
             Key::Char('q') | Key::Ctrl('c') => break,
 
+            // Move the cursor if user pressed arrow key
             Key::Up => minefield.move_to(&Direction::Up),
             Key::Down => minefield.move_to(&Direction::Down),
             Key::Left => minefield.move_to(&Direction::Left),
@@ -59,10 +60,13 @@ fn main() {
             Key::Char(' ') | Key::Char('\n') => minefield.uncover(),
             // Flag (or unflag) mine if user pressed F key
             Key::Char('f') => minefield.flag(),
+
             // Restart game if user pressed R key
             Key::Char('r') => {
                 // Restart
                 minefield.restart();
+
+                // Print default minefield again
                 print!(
                     "{}{}{}{}{}{}",
                     // Clear the screen.
@@ -84,7 +88,7 @@ fn main() {
             _ => (),
         }
 
-        // Flush again.
+        // Flush stdout again (i.e. make the output appear).
         stdout.flush().unwrap();
     }
 
