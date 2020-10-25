@@ -53,13 +53,66 @@ impl std::fmt::Display for Cell {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self.state {
             // TODO: Add colors to numbers
-            CellState::Mines(n) => write!(
-                f,
-                "{}{}{}",
-                color::Bg(color::Reset),
-                color::Fg(color::Reset),
-                n
-            ),
+            CellState::Mines(n) => match n {
+                0 => write!(f, "{}{} ", color::Bg(color::Reset), color::Fg(color::Reset),),
+                1 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::LightBlue),
+                    n
+                ),
+                2 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::Green),
+                    n
+                ),
+                3 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::LightRed),
+                    n
+                ),
+                4 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::Blue),
+                    n
+                ),
+                5 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::Red),
+                    n
+                ),
+                6 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::LightCyan),
+                    n
+                ),
+                7 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::Black),
+                    n
+                ),
+                8 => write!(
+                    f,
+                    "{}{}{}",
+                    color::Bg(color::Reset),
+                    color::Fg(color::LightBlack),
+                    n
+                ),
+                _ => panic!(),
+            },
             CellState::Covered => {
                 write!(f, "{}{}▒", color::Bg(color::Reset), color::Fg(color::Reset))
             }
