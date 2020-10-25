@@ -1,7 +1,8 @@
 use termion::color;
 
 #[derive(Copy, Clone)]
-enum CellState {
+/// Represents the states in which a cell can be.
+pub enum CellState {
     Mines(u8),
     Covered,
     Flagged,
@@ -11,15 +12,20 @@ enum CellState {
 
 #[derive(Copy, Clone)]
 pub struct Cell {
-    state: CellState,
+    /// If the cell has a mine
     pub contains_mine: bool,
+
+    // /// The number of mines there are surrounding this one
+    // pub surrounding_mines_count: u8,
+    /// In which state should this cell be drawn to the terminal
+    pub state: CellState,
 }
 
 impl Cell {
-    pub const fn new(has_mine: bool) -> Self {
+    pub const fn new(contains_mine: bool) -> Self {
         Self {
+            contains_mine,
             state: CellState::Covered,
-            contains_mine: has_mine,
         }
     }
 
@@ -35,19 +41,11 @@ impl Cell {
             _ => (),
         }
     }
-
-    pub fn uncover(&self) {
-        // Should check if it has a mine and return something
-    }
-
-    pub fn uncover_surroundings(&self) {
-        // Get Cell object of the 8 surrounding mines
-        // If any are covered, check to see if they have mines
-        // Change their states to the correct ones
-        // If one has 0 mines, call this function on that cell
-    }
 }
 
+/// Implements Display for the Cell object
+/// This makes it so that you can simply print a Cell object
+/// and it will display its state with colors and stuff
 #[allow(clippy::non_ascii_literal)]
 impl std::fmt::Display for Cell {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
